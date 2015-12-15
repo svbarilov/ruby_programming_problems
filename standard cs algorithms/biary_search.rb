@@ -35,6 +35,35 @@ end
 ############################################################################################
 
 
+# Binary Search: This search finds an item in log(n) time provided that the container is already sorted.
+ # The method returns the item if it is found, or nil if it is not. If there are duplicates, the first one
+ # found is returned, and this is not guaranteed to be the smallest or largest item.
+ #
+ # Complexity: O(lg N)
+ # 
+ #   Algorithms::Search.binary_search([1, 2, 3], 1) #=> 1
+ #   Algorithms::Search.binary_search([1, 2, 3], 4) #=> nil
+ def self.binary_search(container, item)
+   return nil if item.nil?
+   low = 0
+   high = container.size - 1
+   while low <= high
+     mid = (low + high) / 2
+     val = container[mid]
+     if val > item
+       high = mid - 1
+     elsif val < item
+       low = mid + 1
+     else
+       return val
+     end
+   end
+   nil
+ end
+ 
+############################################################################################
+
+
 
 # Recursive Pseudocode:
 # // initially called with low = 0, high = N-1
